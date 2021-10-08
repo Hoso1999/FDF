@@ -1,0 +1,56 @@
+Mmain	main.c	/^int main(int argc, char **argv)$/
+UI	minilibxEvents.c	/^void UI(fdf_t *fdf)$/
+changeButtonColor	mouseEvent.c	/^void changeButtonColor(fdf_t *fdf)$/
+changeMovePosition	main.c	/^void changeMovePosition(fdf_t *fdf)$/
+changeProjection	Calculations.c	/^void changeProjection(fdf_t *fdf)$/
+changeRotation	Rotations.c	/^void changeRotation(fdf_t *fdf)$/
+changeRotationAngle	main.c	/^void changeRotationAngle(fdf_t *fdf)$/
+changeTo2D	Calculations.c	/^void changeTo2D(fdf_t *fdf, point_t *p)$/
+changeToConic	Calculations.c	/^void changeToConic(fdf_t *fdf, point_t *p)$/
+changeToDiametric	Calculations.c	/^void changeToDiametric(fdf_t *fdf, point_t *p)$/
+changeToIsometric	Calculations.c	/^void changeToIsometric(fdf_t *fdf, point_t *p)$/
+changeZmod	main.c	/^void changeZmod(fdf_t *fdf)$/
+changeZoom	mouseEvent.c	/^static void	changeZoom(int button, fdf_t *fdf)$/
+clearWindow	main.c	/^void clearWindow(fdf_t *fdf)$/
+closeWindow	minilibxEvents.c	/^int closeWindow(fdf_t *fdf)$/
+degreeToRad	Calculations.c	/^double degreeToRad(int degree)$/
+draw	main.c	/^int draw(fdf_t *fdf)$/
+drawButton	Drawing.c	/^void drawButton(fdf_t *fdf)$/
+drawControls	Drawing.c	/^void drawControls(fdf_t *fdf)$/
+drawHighPoint	Drawing.c	/^void drawHighPoint(fdf_t *fdf, point_t start, poin/
+drawLine	Drawing.c	/^void drawLine(fdf_t *fdf, point_t start, point_t e/
+drawLowPoint	Drawing.c	/^void drawLowPoint(fdf_t *fdf, point_t start, point/
+drawMap	Drawing.c	/^void drawMap(fdf_t *fdf)$/
+error	Helpers.c	/^void error(int errnum, char *message)$/
+fillMap	getValues.c	/^void fillMap(fdf_t *fdf, char **lineValues, int li/
+getHeight	getValues.c	/^void	getHeight(int fd, fdf_t *fdf)$/
+getParameters	Calculations.c	/^void getParameters(fdf_t *fdf, point_t start, poin/
+getWidth	getValues.c	/^int getWidth(fdf_t *fdf, char **lineValues, int li/
+get_color	Helpers.c	/^int				get_color(fdf_t *fdf, point_t start, point_/
+get_light	Helpers.c	/^static int		get_light(int start, int end, double p/
+graphicEvents	minilibxEvents.c	/^void graphicEvents(fdf_t *fdf)$/
+hexToInt	Helpers.c	/^int hexToInt(char *hex)$/
+initCamera	Init.c	/^void initCamera(camera_t *cam)$/
+initFdf	Init.c	/^void initFdf(fdf_t *fdf)$/
+initKeys	Init.c	/^void initKeys(activeKeys_t *keys)$/
+isNumberString	Helpers.c	/^int isNumberString(char *str)$/
+isValidFileExtension	readFile.c	/^static int isValidFileExtension(char *filename)$/
+keyPress	keyboardEvents.c	/^int keyPress(int key, fdf_t *fdf)$/
+keyRelease	keyboardEvents.c	/^int keyRelease(int key, fdf_t *fdf)$/
+mapFree	Helpers.c	/^void mapFree(map_t *map)$/
+mouseChangeZmod	mouseEvent.c	/^static void	mouseChangeZmod(int button, fdf_t *fdf/
+mouseDown	mouseEvent.c	/^int mouseDown(int button, int x, int y, fdf_t *fdf/
+mouseMove	mouseEvent.c	/^int mouseMove(int x,int y,fdf_t *fdf)$/
+mouseUp	mouseEvent.c	/^int mouseUp(int button, int x, int y, fdf_t *fdf)$/
+percent	Helpers.c	/^static double	percent(int start, int end, int curr/
+pressMoveKeys	keyboardEvents.c	/^void pressMoveKeys(int key, fdf_t *fdf)$/
+pressRotationKeys	keyboardEvents.c	/^void pressRotationKeys(int key, fdf_t *fdf)$/
+putPixel	Helpers.c	/^void putPixel(image_t *img, int x, int y, int colo/
+readFromFile	readFile.c	/^void readFromFile(fdf_t *fdf, int argc, char **arg/
+readLineFromFile	readFile.c	/^static void readLineFromFile(int fd, fdf_t *fdf, c/
+releaseMoveKeys	keyboardEvents.c	/^void releaseMoveKeys(int key, fdf_t *fdf)$/
+releaseRotationKeys	keyboardEvents.c	/^void releaseRotationKeys(int key, fdf_t *fdf)$/
+rgb	Helpers.c	/^int rgb(int r, int g, int b)$/
+rotateX	Rotations.c	/^void	rotateX(point_t *p, double ang)$/
+rotateY	Rotations.c	/^void	rotateY(point_t *p, double ang)$/
+rotateZ	Rotations.c	/^void	rotateZ(point_t *p, double ang)$/
