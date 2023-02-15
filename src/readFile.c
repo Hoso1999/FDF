@@ -47,20 +47,31 @@ static int isValidFileExtension(char *filename)
 void readFromFile(fdf_t *fdf, int argc, char **argv)
 {
     int fd;
+    int i;
+    int is_save;
 
     fd = -1;
-    if (argc >= 2 && argc <= 4)
+    i = 1;
+    is_save = 0;
+    while (++i < argc)
+        if (!ft_strcmp(argv[i], "--save"))
+            fdf->is_save = 1;
+    if (argc >= 2 && argc <= 5)
     {
         if (argc > 2)
         {
-            if (!isNumberString(argv[2]))
+            is_save = ft_strcmp(argv[2], "--save");
+            if (!isNumberString(argv[2]) && is_save)
                 error(ERR_INVALID_ARGS, ARGUMENT_ERROR, fdf);
-            fdf->camera.zoom = ft_atoi(argv[2]);
+            if (is_save)
+                fdf->camera.zoom = ft_atoi(argv[2]);
             if (argc == 4)
             {
-                if (!isNumberString(argv[3]))
+                is_save = ft_strcmp(argv[3], "--save");
+                if (!isNumberString(argv[3]) && is_save)
                     error(ERR_INVALID_ARGS, ARGUMENT_ERROR, fdf);
-                fdf->camera.zMod = ft_atoi(argv[3]);
+                if (is_save)
+                    fdf->camera.zMod = ft_atoi(argv[3]);
             }
         }
         if (!isValidFileExtension(argv[1]))

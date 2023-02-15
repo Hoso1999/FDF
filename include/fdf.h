@@ -5,12 +5,16 @@
 #include "keys.h"
 #include "libft.h"
 #include "error.h"
+#include "bmp_writer.h"
 #include <stdio.h>
 #include <math.h>
 
 //Screen Sizes
 #define SCREENWIDTH 1920
 #define SCREENHEIGHT 1080
+
+
+#define IMG_PATH "resources/images"
 
 //Control Parameters
 #define inRange(x, min, max)(x >= min && x <= max)
@@ -60,7 +64,7 @@ typedef struct coord
 typedef struct image
 {
     void    *ptr;
-    void    *px;
+    int     *px;
     int     bits_per_pixel;
     int     size_line;
     int     endian;
@@ -155,6 +159,8 @@ typedef struct activekeys
 //Main Structure
 struct fdf
 {
+    unsigned char   is_save;
+    char            *save_loc;
     activeKeys_t    keys;
     minilibx_t      mlx;
     map_t           map;

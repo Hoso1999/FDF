@@ -21,6 +21,8 @@ void initKeys(activeKeys_t *keys)
 void initFdf(fdf_t *fdf)
 {
     fdf->map.matrix = NULL;
+    fdf->is_save = 0;
+    fdf->save_loc = 0;
     fdf->map.height = 0;
     fdf->map.width = 0;
     fdf->delta = (position_t){0, 0, 0};
@@ -42,10 +44,10 @@ void initMlx(fdf_t  *fdf)
         error(ERR_MLX, MLXWINDOW_ERROR, fdf);
     if (!(fdf->mlx.button.ptr = mlx_new_image(fdf->mlx.ptr, BTNSIZE, BTNSIZE)))
         error(ERR_MLX, MLXIMAGE_ERROR, fdf);
-    fdf->mlx.button.px = mlx_get_data_addr(fdf->mlx.button.ptr, &fdf->mlx.button.bits_per_pixel, &fdf->mlx.button.size_line, &fdf->mlx.button.endian);
-    if (!(fdf->mlx.image.ptr = mlx_new_image(fdf->mlx.ptr, SCREENWIDTH + 1, SCREENHEIGHT + 1)))
+    fdf->mlx.button.px = (int*)mlx_get_data_addr(fdf->mlx.button.ptr, &fdf->mlx.button.bits_per_pixel, &fdf->mlx.button.size_line, &fdf->mlx.button.endian);
+    if (!(fdf->mlx.image.ptr = mlx_new_image(fdf->mlx.ptr, SCREENWIDTH, SCREENHEIGHT)))
         error(ERR_MLX, MLXIMAGE_ERROR, fdf);
-    fdf->mlx.image.px = mlx_get_data_addr(fdf->mlx.image.ptr, &fdf->mlx.image.bits_per_pixel, &fdf->mlx.image.size_line, &fdf->mlx.image.endian);
+    fdf->mlx.image.px = (int*)mlx_get_data_addr(fdf->mlx.image.ptr, &fdf->mlx.image.bits_per_pixel, &fdf->mlx.image.size_line, &fdf->mlx.image.endian);
     initCamera(&fdf->camera);
     initKeys(&fdf->keys);
 

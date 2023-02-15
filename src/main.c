@@ -60,9 +60,15 @@ int draw(fdf_t *fdf)
     changeProjection(fdf);
     drawMap(fdf);
     drawControls(fdf);
-    UI(fdf);
     drawButton(fdf);
+    UI(fdf);
     mlx_do_sync(fdf->mlx.ptr);
+	if (fdf->is_save)
+    {
+		do_the_bmp_thing(fdf, fdf->save_loc);
+        printf("Image saved in \"%s\" location\n", IMG_PATH);
+        exit(0);
+    }
     return (1);
 }
 
@@ -73,5 +79,7 @@ int main(int argc, char **argv)
     initFdf(&fdf);
     readFromFile(&fdf, argc, argv);
     initMlx(&fdf);
+    if (fdf.is_save)
+        fdf.save_loc = argv[1];
     graphicEvents(&fdf);
 }

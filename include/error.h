@@ -8,7 +8,7 @@
 #define ERR_PARSING -1
 #define ERR_MLX 10
 
-#define USAGE_ERROR "Usage: ./fdf <filepath> <zoom> <Zmod>"
+#define USAGE_ERROR "Usage: ./fdf <filepath> <zoom> <Zmod> [--save]"
 #define FILE_ERROR "Could not open file"
 #define GETLINE_ERROR "Could not read line"
 #define MALLOC_ERROR "Could not allocate memory"
@@ -18,6 +18,8 @@
 #define MLXWINDOW_ERROR "Could not create window"
 #define MLXIMAGE_ERROR "Could not create window"
 #define MLX_ERROR "Could not initalize minilibx"
+
+
 
 typedef struct fdf fdf_t;
 //Error Handle
