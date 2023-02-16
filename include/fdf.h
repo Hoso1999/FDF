@@ -229,6 +229,7 @@ void    changeZmod(fdf_t *fdf);
 
 //initalization
 void    initCamera(camera_t *cam);
+void    initKeys(activeKeys_t *keys);
 void    initFdf(fdf_t *fdf);
 void    initMlx(fdf_t  *fdf);
 

@@ -48,7 +48,4 @@ void initMlx(fdf_t  *fdf)
     if (!(fdf->mlx.image.ptr = mlx_new_image(fdf->mlx.ptr, SCREENWIDTH, SCREENHEIGHT)))
         error(ERR_MLX, MLXIMAGE_ERROR, fdf);
     fdf->mlx.image.px = (int*)mlx_get_data_addr(fdf->mlx.image.ptr, &fdf->mlx.image.bits_per_pixel, &fdf->mlx.image.size_line, &fdf->mlx.image.endian);
-    initCamera(&fdf->camera);
-    initKeys(&fdf->keys);
-
 }

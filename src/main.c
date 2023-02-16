@@ -76,6 +76,8 @@ int main(int argc, char **argv)
 {
     fdf_t fdf;
 
+    initCamera(&fdf.camera);
+    initKeys(&fdf.keys);
     initFdf(&fdf);
     readFromFile(&fdf, argc, argv);
     initMlx(&fdf);
