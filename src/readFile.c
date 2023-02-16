@@ -17,7 +17,7 @@ static void readLineFromFile(int fd, fdf_t *fdf, char *file)
         if (line && *line)
         {
             len = ft_strlen(line);
-            line[len - 2] = 0;
+            line[len - 1] = 0;
         }
         lineValues = ft_strsplit(line, ' ');
         fillMap(fdf, lineValues, lineIndex);
