@@ -8,7 +8,7 @@
 #define ERR_PARSING -1
 #define ERR_MLX 10
 
-#define USAGE_ERROR "Usage: ./fdf <filepath> <zoom> <Zmod> [--save]"
+#define USAGE_ERROR "Usage: fdf <map.fdf> [zoom] [z-mod] [--save]"
 #define FILE_ERROR "Could not open file"
 #define GETLINE_ERROR "Could not read line"
 #define MALLOC_ERROR "Could not allocate memory"
