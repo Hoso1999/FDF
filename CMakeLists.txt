@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.16)
 project(fdf LANGUAGES C)
 
 OPTION (BUILD_SHARED_LIBS OFF)
-set(CMAKE_BINARY_DIR "./build")
-set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
-set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+set(CMAKE_BINARY_DIR ${PROJECT_SOURCE_DIR}/build)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY, ${PROJECT_SOURCE_DIR}/build)
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 add_subdirectory(lib/ft ${CMAKE_BINARY_DIR}/ft)
 
 find_package(OpenGL REQUIRED)
@@ -34,7 +34,7 @@ if  (APPLE)
         )
     add_executable(fdf ${all_SRCS})
     add_dependencies(fdf minilibx ft)
-    target_link_directories(fdf PRIVATE ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/ft ${PROJECT_SOURCE_DIR}/lib/mlx/macOS)
+    target_link_directories(fdf PRIVATE ${CMAKE_BINARY_DIR}/ft ${PROJECT_SOURCE_DIR}/lib/mlx/macOS)
     target_link_libraries(fdf PRIVATE ft mlx ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
     set_target_properties(fdf PROPERTIES LINK_FLAGS "-framework OpenGL -framework AppKit")
     add_custom_target(
@@ -44,9 +44,14 @@ if  (APPLE)
     )
 
     add_custom_target(
-       fclean
-       COMMAND make clean --silent
-       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/lib/mlx/macOS
+        fclean
+        COMMAND make clean ${CMAKE_BINARY_DIR}
+        COMMAND make clean --silent ${PROJECT_SOURCE_DIR}/lib/mlx/macOS
+        COMMAND rm -rf ${PROJECT_SOURCE_DIR}/CMakeCache.txt
+        COMMAND rm -rf ${PROJECT_SOURCE_DIR}/CMakeFiles/
+        COMMAND rm -rf ${PROJECT_SOURCE_DIR}/Makefile
+        COMMAND rm -rf ${CMAKE_BINARY_DIR}
+        COMMAND rm -rf ${PROJECT_SOURCE_DIR}/cmake_install.cmake
     )
     add_definitions(-DMACOS)
 else()
@@ -64,7 +69,7 @@ else()
         )
     add_executable(fdf ${all_SRCS})
     add_dependencies(fdf minilibx ft)
-    target_link_directories(fdf PRIVATE ${CMAKE_BINARY_DIR} ${CMAKE_BINARY_DIR}/ft ${PROJECT_SOURCE_DIR}/lib/mlx/linux)
+    target_link_directories(fdf PRIVATE ${CMAKE_BINARY_DIR}/ft ${PROJECT_SOURCE_DIR}/lib/mlx/linux)
     target_link_libraries(fdf PRIVATE ft mlx ${OPENGL_LIBRARIES} ${GLUT_LIBRARY})
     set_target_properties(fdf PROPERTIES LINK_FLAGS "-lm -lX11 -lXext -lpthread")
     add_custom_target(
@@ -73,9 +78,14 @@ else()
        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/lib/mlx/linux
     )
     add_custom_target(
-       fclean
-       COMMAND make clean --silent
-       WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/lib/mlx/linux
+        fclean
+        COMMAND make clean ${CMAKE_BINARY_DIR}
+        COMMAND make clean --silent ${PROJECT_SOURCE_DIR}/lib/mlx/linux
+        COMMAND rm -rf ${PROJECT_SOURCE_DIR}/CMakeCache.txt
+        COMMAND rm -rf ${PROJECT_SOURCE_DIR}/CMakeFiles/
+        COMMAND rm -rf ${PROJECT_SOURCE_DIR}/Makefile
+        COMMAND rm -rf ${CMAKE_BINARY_DIR}
+        COMMAND rm -rf ${PROJECT_SOURCE_DIR}/cmake_install.cmake
     )
     add_definitions(-DLINUX)
 endif()
