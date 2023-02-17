@@ -13,6 +13,7 @@ You can specify build directory
     BUILD_DIR/build/bin/fdf <map.fdf> [zoom] [z-mod] [--save]
 ```
 You can save image using --save option<br />
+Images will be save in resources/images folder
 The coordinates of the landscape are stored in a .fdf file passed as a parameter to
 your program
 Here is an example
@@ -57,6 +58,8 @@ Should render a landscape similar to:
 Application has control instruction panel
 
 ![image](https://user-images.githubusercontent.com/45395182/219734968-08c300a3-c9ba-4972-8397-8d8ec519deca.png)
+
+You can find example .fdf files in resources/maps folder
 
 
 
