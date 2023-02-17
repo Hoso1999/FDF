@@ -42,15 +42,14 @@ if  (APPLE)
        COMMAND make --silent
        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/lib/mlx/macOS
     )
-
     add_custom_target(
         fclean
         COMMAND make clean ${CMAKE_BINARY_DIR}
-        COMMAND make clean --silent ${PROJECT_SOURCE_DIR}/lib/mlx/macOS
+        COMMAND make clean --silent
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/lib/mlx/macOS
         COMMAND rm -rf ${PROJECT_SOURCE_DIR}/CMakeCache.txt
         COMMAND rm -rf ${PROJECT_SOURCE_DIR}/CMakeFiles/
         COMMAND rm -rf ${PROJECT_SOURCE_DIR}/Makefile
-        COMMAND rm -rf ${CMAKE_BINARY_DIR}
         COMMAND rm -rf ${PROJECT_SOURCE_DIR}/cmake_install.cmake
     )
     add_definitions(-DMACOS)
@@ -80,11 +79,11 @@ else()
     add_custom_target(
         fclean
         COMMAND make clean ${CMAKE_BINARY_DIR}
-        COMMAND make clean --silent ${PROJECT_SOURCE_DIR}/lib/mlx/linux
+        COMMAND make clean --silent
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/lib/mlx/linux
         COMMAND rm -rf ${PROJECT_SOURCE_DIR}/CMakeCache.txt
         COMMAND rm -rf ${PROJECT_SOURCE_DIR}/CMakeFiles/
         COMMAND rm -rf ${PROJECT_SOURCE_DIR}/Makefile
-        COMMAND rm -rf ${CMAKE_BINARY_DIR}
         COMMAND rm -rf ${PROJECT_SOURCE_DIR}/cmake_install.cmake
     )
     add_definitions(-DLINUX)

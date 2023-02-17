@@ -1,0 +1,8 @@
+/iSCSI/FDF/build/CMakeFiles/fdf.dir
+/iSCSI/FDF/build/CMakeFiles/minilibx.dir
+/iSCSI/FDF/build/CMakeFiles/fclean.dir
+/iSCSI/FDF/build/CMakeFiles/edit_cache.dir
+/iSCSI/FDF/build/CMakeFiles/rebuild_cache.dir
+/iSCSI/FDF/build/ft/CMakeFiles/ft.dir
+/iSCSI/FDF/build/ft/CMakeFiles/edit_cache.dir
+/iSCSI/FDF/build/ft/CMakeFiles/rebuild_cache.dir
