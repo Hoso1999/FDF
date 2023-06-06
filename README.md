@@ -5,11 +5,11 @@ The aim of this project is to develop a simple 3D wireframe model representation
 
 Project Features:
 
-1. 3D Wireframe Model Representation: Implement a basic wireframe model using lines and points to represent a 3D object. The model will be displayed in a single projection (e.g., orthographic, perspective).
+1. 3D Wireframe Model Representation: Implement a basic wireframe model using lines and points to represent a 3D object. The model will be displayed in a single projection (isometric, diametric, 2D).
 2. Zoom: Allow users to zoom in and out of the wireframe model to examine it more closely or view it from a wider perspective. Implement controls to adjust the zoom level accordingly.
 3. Move: Enable users to move the wireframe model within the viewing window. Users should be able to translate the model along the X, Y, and Z axes to change its position within the viewport.
 4. Rotate: Implement rotation functionality to enable users to spin the wireframe model around different axes. Users should be able to rotate the model horizontally and vertically to view it from different angles.
-5. Change Projection: Provide users with the ability to switch between different projections to observe the wireframe model from various perspectives. Offer options such as orthographic, perspective, isometric, etc., and implement controls for seamless projection switching.
+5. Change Projection: Provide users with the ability to switch between different projections to observe the wireframe model from various perspectives. Offer options such as isometric, diametric and 2D, and implement controls for seamless projection switching.
 6. Linear Gradient for Lines: Enhance the wireframe model's aesthetics by incorporating a linear gradient for the lines. This feature will apply a gradual color transition along the length of each line, giving the model a visually appealing appearance.
 7. Mouse and Keyboard Controls: Implement intuitive mouse and keyboard controls to facilitate user interaction. Users should be able to navigate the wireframe model using mouse movements and employ keyboard shortcuts for various features, such as zoom, rotate, and projection change.
 # Usage
