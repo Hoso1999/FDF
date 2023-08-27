@@ -40,20 +40,26 @@ int mouseDown(int button, int x, int y, fdf_t *fdf)
         return (0);
     if (button == KEY_SCROLL_DOWN || button == KEY_SCROLL_UP)
     {
-        if (fdf->mlx.mouse.keys.right)
+        if (fdf->keys.option)
             mouseChangeZmod(button, fdf);
         else
             changeZoom(button, fdf);   
     }
-    if (button == KEY_RIGHT_CLICK)
+    #if MACOS
+        if (button == KEY_RIGHT_CLICK)
+        {
+            fdf->camera.move.x = x;
+            fdf->camera.move.y = y;
+        }
+    #endif
+    if (button == KEY_LEFT_CLICK)
     {
         fdf->camera.move.x = x;
         fdf->camera.move.y = y;
-    }
-    if (button == KEY_LEFT_CLICK)
         fdf->mlx.mouse.keys.left = 1;
-    if (button == KEY_RIGHT_CLICK)
-        fdf->mlx.mouse.keys.right = 1;
+    }
+    // if (button == KEY_RIGHT_CLICK)
+    //     fdf->mlx.mouse.keys.right = 1;
     if (button == KEY_SCROLL_CLICK)
         fdf->mlx.mouse.keys.scroll = 1;
     return (0);
@@ -67,14 +73,14 @@ int mouseUp(int button, int x, int y, fdf_t *fdf)
         return (0);
     if (button == KEY_LEFT_CLICK)
         fdf->mlx.mouse.keys.left = 0;
-    if (button == KEY_RIGHT_CLICK)
-        fdf->mlx.mouse.keys.right = 0;
+    // if (button == KEY_RIGHT_CLICK)
+    //     fdf->mlx.mouse.keys.right = 0;
     if (button == KEY_SCROLL_CLICK)
         fdf->mlx.mouse.keys.scroll = 0;
     return (0);
 }
 
-int mouseMove(int x,int y,fdf_t *fdf)
+int mouseMove(int x, int y, fdf_t *fdf)
 {
     fdf->mlx.mouse.lastX = fdf->mlx.mouse.x;
     fdf->mlx.mouse.lastY = fdf->mlx.mouse.y;

@@ -10,24 +10,33 @@ static void readLineFromFile(int fd, fdf_t *fdf, char *file)
 
     lineIndex = 0;
     line = NULL;
+    fdf->map.matrix[fdf->map.height] = NULL;
     if ((fd = open(file, O_RDONLY)) < 0)
         error(ERR_IO, FILE_ERROR, fdf);
     while ((gnlErr = ft_getline(fd, &line)))
     {
-        if (line && *line)
+        if (line)
         {
+            if (!*line)
+            {
+                free(line);
+                continue;
+            }
             len = ft_strlen(line);
-            line[len - 1] = 0;
+            if (len > 2)
+            {
+                // line[len - 2] = 0;
+                lineValues = ft_strsplit(line, ' ');
+                fillMap(fdf, lineValues, lineIndex);
+                // line[len - 2] = '\n';
+                free(line);
+            }
         }
-        lineValues = ft_strsplit(line, ' ');
-        fillMap(fdf, lineValues, lineIndex);
-        free(line);
         ++lineIndex;
         
     }
     close(fd);
-    free(line);
-    fdf->map.matrix[lineIndex] = NULL;
+    // free(line);
     if (gnlErr < 0)
         error(ERR_IO, GETLINE_ERROR, fdf);
 }

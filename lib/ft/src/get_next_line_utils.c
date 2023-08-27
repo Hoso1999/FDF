@@ -43,7 +43,8 @@ char	*ft_gnl_strjoin(char *s1, char *s2)
 		while (s2[f_index])
 			new_str[s_index++] = s2[f_index++];
 	new_str[s_index] = '\0';
-	free(s1);
+	if (s1)
+		free(s1);
 	return (new_str);
 }
 

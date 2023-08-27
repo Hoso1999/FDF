@@ -4,10 +4,20 @@ int keyRelease(int key, fdf_t *fdf)
 {
     if (key == KEY_ESC)
         closeWindow(fdf);
-    if ((key >= KEY_ARROW_LEFT && key <= KEY_ARROW_UP )|| key == KEY_Q || key == KEY_E)
+     #if MACOS
+        if ((key >= KEY_ARROW_LEFT && key <= KEY_ARROW_UP) || key == KEY_Q || key == KEY_E)
+    #elif LINUX
+        if((key >= KEY_ARROW_LEFT && key <= KEY_ARROW_DOWN) || key == KEY_Q || key == KEY_E)
+    #endif
         releaseRotationKeys(key, fdf);
-    if ((key >= KEY_A && key <= KEY_D) || key == KEY_W || key == KEY_Z || key == KEY_C)
+     #if MACOS
+        if ((key >= KEY_A && key <= KEY_D) || key == KEY_W || key == KEY_Z || key == KEY_C)
+    #elif LINUX
+        if (key == KEY_A || key == KEY_S || key == KEY_D || key == KEY_W || key == KEY_Z || key == KEY_C)
+    #endif
         releaseMoveKeys(key, fdf);
+    if (key == KEY_LCTRL || key == KEY_RCTRL)
+        fdf->keys.option = 0;
     if (key == KEY_R)
         fdf->keys.zMod.posSide = 0;
     if (key == KEY_F)
@@ -19,10 +29,22 @@ int keyPress(int key, fdf_t *fdf)
 {
     if (key == KEY_ESC)
         closeWindow(fdf);
-    if ((key >= KEY_ARROW_LEFT && key <= KEY_ARROW_UP) || key == KEY_Q || key == KEY_E)
+    #if MACOS
+        if ((key >= KEY_ARROW_LEFT && key <= KEY_ARROW_UP) || key == KEY_Q || key == KEY_E)
+    #elif LINUX
+        if((key >= KEY_ARROW_LEFT && key <= KEY_ARROW_DOWN) || key == KEY_Q || key == KEY_E)
+    #endif
         pressRotationKeys(key, fdf);
-    if ((key >= KEY_A && key <= KEY_D) || key == KEY_W || key == KEY_Z || key == KEY_C)
+     #if MACOS
+        if ((key >= KEY_A && key <= KEY_D) || key == KEY_W || key == KEY_Z || key == KEY_C)
+    #elif LINUX
+        if (key == KEY_A || key == KEY_S || key == KEY_D || key == KEY_W || key == KEY_Z || key == KEY_C)
+    #endif
         pressMoveKeys(key, fdf);
+    if (key == KEY_LCTRL || key == KEY_RCTRL)
+        fdf->keys.option = 1;
+     if (key == KEY_G)
+        initCamera(&fdf->camera);
     if (key == KEY_R)
         fdf->keys.zMod.posSide = 1;
     if (key == KEY_F)

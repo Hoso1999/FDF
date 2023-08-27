@@ -2,30 +2,32 @@
 
 void changeRotationAngle(fdf_t *fdf)
 {
+    // printf("%d\n", fdf->keys.rotate.negX);
     if (fdf->keys.rotate.posX && !fdf->keys.rotate.negX)
-        fdf->camera.rotAngle.x += 5;
+        fdf->camera.rotAngle.x += SPEED;
     if (!fdf->keys.rotate.posX && fdf->keys.rotate.negX)
-        fdf->camera.rotAngle.x -= 5;
+        fdf->camera.rotAngle.x -= SPEED;
     if (fdf->keys.rotate.posY && !fdf->keys.rotate.negY)
-        fdf->camera.rotAngle.y += 5;
+        fdf->camera.rotAngle.y += SPEED;
     if (!fdf->keys.rotate.posY && fdf->keys.rotate.negY)
-        fdf->camera.rotAngle.y -= 5;
+        fdf->camera.rotAngle.y -= SPEED;
     if (fdf->keys.rotate.posZ && !fdf->keys.rotate.negZ)
-        fdf->camera.rotAngle.z += 5;
+        fdf->camera.rotAngle.z += SPEED;
     if (!fdf->keys.rotate.posZ && fdf->keys.rotate.negZ)
-        fdf->camera.rotAngle.z -= 5;
+        fdf->camera.rotAngle.z -= SPEED;
         
 }
 void changeMovePosition(fdf_t *fdf)
 {
+    // printf()
     if (fdf->keys.move.posX && !fdf->keys.move.negX)
-        fdf->camera.move.x += 5;
+        fdf->camera.move.x += SPEED;
     if (!fdf->keys.move.posX && fdf->keys.move.negX)
-        fdf->camera.move.x -= 5;
+        fdf->camera.move.x -= SPEED;
     if (fdf->keys.move.posY && !fdf->keys.move.negY)
-        fdf->camera.move.y -= 5;
+        fdf->camera.move.y -= SPEED;
     if (!fdf->keys.move.posY && fdf->keys.move.negY)
-        fdf->camera.move.y += 5;
+        fdf->camera.move.y += SPEED;
     if ((fdf->keys.move.posZ && !fdf->keys.move.negZ) || (fdf->mlx.mouse.keys.scrollDown && !fdf->mlx.mouse.keys.scrollDown))
         fdf->camera.zoom += 1;
     if ((!fdf->keys.move.posZ && fdf->keys.move.negZ) || (!fdf->mlx.mouse.keys.scrollDown && fdf->mlx.mouse.keys.scrollDown))
@@ -53,7 +55,7 @@ int draw(fdf_t *fdf)
     changeZmod(fdf);
     changeRotationAngle(fdf);
     changeMovePosition(fdf);
-    fdf->camera.zoom = (fdf->camera.zoom < 1) ? 1 : fdf->camera.zoom;
+    fdf->camera.zoom = (fdf->camera.zoom < MAXZOOM) ? MAXZOOM : fdf->camera.zoom;
     fdf->camera.zMod = (fdf->camera.zMod < MINZMOD) ? MINZMOD : fdf->camera.zMod;
     fdf->camera.zMod = (fdf->camera.zMod > MAXZMOD) ? MAXZMOD : fdf->camera.zMod;
     changeRotation(fdf);
@@ -79,8 +81,8 @@ int main(int argc, char **argv)
     initCamera(&fdf.camera);
     initKeys(&fdf.keys);
     initFdf(&fdf);
-    readFromFile(&fdf, argc, argv);
     initMlx(&fdf);
+    readFromFile(&fdf, argc, argv);
     if (fdf.is_save)
         fdf.save_loc = argv[1];
     graphicEvents(&fdf);

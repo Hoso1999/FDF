@@ -22,7 +22,6 @@
 #define BGCOLOR rgb	(25,24,24)
 #define CONTROLCOLOR rgb(24, 21, 21)
 #define CONTROLWIDTH SCREENWIDTH / 4
-#define CONTROLHEIGHT SCREENHEIGHT / 4 - 200
 #define CONTROLPOSX SCREENWIDTH - CONTROLWIDTH
 #define CONTROLPOSY SCREENHEIGHT - CONTROLHEIGHT
 #define MINZOOM 10
@@ -32,8 +31,23 @@
 #define BTNCOLOR rgb(0, 0, 0)
 #define BTNDEFAULTCOLOR rgb(255, 255, 255)
 #define BTNPOSX CONTROLPOSX + CONTROLWIDTH / 2
-#define BTNPOSY SCREENHEIGHT - 50
-#define BTNSIZE 25
+#if MACOS
+    // #define ZMODSPEED 1.0
+    #define CONTROLHEIGHT SCREENHEIGHT / 4 - 200
+    #define BTNPOSY SCREENHEIGHT - 50
+    #define BTNSIZE 25
+    #define SPEED 5
+    #define MAXZOOM 1
+#elif LINUX
+    #define CONTROLHEIGHT SCREENHEIGHT / 4 - 250
+    #define BTNPOSY SCREENHEIGHT - 100
+    #define BTNSIZE 25
+    #define MAXZOOM 15
+    #define SPEED 3
+    #define M_PI 3.14159265358979323846
+    #include <sys/stat.h>
+#endif
+
 
 typedef enum projection
 {
@@ -74,7 +88,7 @@ typedef struct image
 typedef struct mouseActiveKeys
 {
     int left;
-    int right;
+    // int right;
     int scroll;
     int scrollDown;
     int scrollUp;
@@ -151,6 +165,7 @@ typedef struct keyPosition
 //Current Active Keys
 typedef struct activekeys
 {
+    int             option;
     keyPosition_t   rotate;
     keyPosition_t   move;
     pos_t           zMod;        

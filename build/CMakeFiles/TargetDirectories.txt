@@ -1,0 +1,7 @@
+/home/hohayrap/Desktop/FDF/build/CMakeFiles/fdf.dir
+/home/hohayrap/Desktop/FDF/build/CMakeFiles/fclean.dir
+/home/hohayrap/Desktop/FDF/build/CMakeFiles/edit_cache.dir
+/home/hohayrap/Desktop/FDF/build/CMakeFiles/rebuild_cache.dir
+/home/hohayrap/Desktop/FDF/build/ft/CMakeFiles/ft.dir
+/home/hohayrap/Desktop/FDF/build/ft/CMakeFiles/edit_cache.dir
+/home/hohayrap/Desktop/FDF/build/ft/CMakeFiles/rebuild_cache.dir

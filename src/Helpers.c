@@ -44,7 +44,9 @@ int hexToInt(char *hex)
     int result;
     int byte;
 
-    while ((c = *hex))
+    c = 0;
+    result = 0;
+    while (hex && (c = *hex))
     {
         ++hex;
         byte = (c & 0xF) + (c >> 6) | ((c >> 3) & 0x8);

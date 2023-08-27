@@ -9,6 +9,7 @@ void initCamera(camera_t *cam)
     cam->rotAngle.z = 0;
     cam->move.x = SCREENWIDTH / 2;
     cam->move.y = SCREENHEIGHT / 2;
+    cam->move.z = 0;
 }
 
 void initKeys(activeKeys_t *keys)
@@ -16,6 +17,7 @@ void initKeys(activeKeys_t *keys)
     keys->rotate = (keyPosition_t){0, 0, 0, 0, 0, 0};
     keys->move = (keyPosition_t){0, 0, 0, 0, 0, 0};
     keys->zMod = (pos_t){0,0};
+    keys->option = 0;
 }
 
 void initFdf(fdf_t *fdf)
@@ -30,6 +32,13 @@ void initFdf(fdf_t *fdf)
     fdf->current = (position_t){0, 0, 0};
     fdf->error = 0;
     fdf->projection = ISO;
+    fdf->mlx.mouse.button = 0;
+    fdf->mlx.mouse.isPressed = 0;
+    fdf->mlx.mouse.keys = (mouseActiveKeys_t){0, 0, 0, 0};
+    fdf->mlx.mouse.lastX = -1;
+    fdf->mlx.mouse.lastY = -1;
+    fdf->mlx.mouse.x = -1;
+    fdf->mlx.mouse.y = -1;
 }
 
 void initMlx(fdf_t  *fdf)

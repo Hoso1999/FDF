@@ -17,8 +17,7 @@ static	int		starting_point(const char *str)
 	int index;
 
 	index = 0;
-	while (str[index] == '\n' || str[index] == '\t' || str[index] == '\f' || \
-			str[index] == '\v' || str[index] == '\r' || str[index] == ' ')
+	while (str && str[index] && ft_isspace(str[index]))
 		++index;
 	return (index);
 }

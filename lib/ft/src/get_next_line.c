@@ -28,8 +28,8 @@ char	*gnl_get_line(char *buffer)
 		line[index] = buffer[index];
 		++index;
 	}
-	line[index] = '\n';
-	++index;
+	// line[index] = '\n';
+	// ++index;
 	line[index] = '\0';
 	return (line);
 }
@@ -67,7 +67,7 @@ int		ft_getline(int fd, char **line)
 {
 	int				read_return;
 	char			*buffer;
-	static	char	*fd_buffer[OPEN_MAX];
+	static	char	*fd_buffer[1024] = {0};
 
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
